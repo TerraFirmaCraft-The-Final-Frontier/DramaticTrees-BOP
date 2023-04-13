@@ -420,7 +420,7 @@ public class ModContent {
 		
 		// Do dead trees separately because the seed grows a species of oak tree
 		ItemStack outputStack = ModItems.dendroPotion.setTargetTree(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesBOP.MODID, DEAD)).getFamily());
-		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), TreeRegistry.findSpecies(new ResourceLocation(DynamicTreesBOP.MODID, DEAD)).getSeedStack(1), outputStack);
+		BrewingRecipeRegistry.addRecipe(new ItemStack(ModItems.dendroPotion, 1, DendroPotionType.TRANSFORM.getIndex()), new ItemStack(Blocks.DEADBUSH), outputStack);
 		
 		// Add seed <-> sapling recipes
 		addSeedExchange(BOPTrees.FLOWERING, FLOWERINGOAK);
