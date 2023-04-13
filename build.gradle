@@ -1,19 +1,21 @@
 buildscript {
 	repositories {
-		jcenter()
-		maven { url = "http://files.minecraftforge.net/maven" }
+		maven {
+			url = "https://maven.minecraftforge.net"
+		}
 	}
 	dependencies {
-		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+		classpath("com.anatawa12.forge:ForgeGradle:2.3-1.0.+") {
+			changing = true
+		}
 	}
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
 repositories {
 	maven {
-		name "CurseForge"
-		url "https://minecraft.curseforge.com/api/maven/"
+		name = "Curse Maven"
+		url "https://www.cursemaven.com"
 	}
 }
 
@@ -39,13 +41,11 @@ jar {
 	from sourceSets.api.output
 }
 
-apply from: 'dependencies.gradle'
-
 version = "${mc_version}-${mod_version}"
 group = package_group
 archivesBaseName = mod_name
 
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
 	sourceCompatibility = targetCompatibility = '1.8'
 }
@@ -64,7 +64,8 @@ minecraft {
 }
 
 dependencies {
-	
+	deobfCompile "curse.maven:biomes-o-plenty-220318:2842510"
+	deobfCompile "curse.maven:dramatictrees-637540:4398759"
 }
 
 processResources {
